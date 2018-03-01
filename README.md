@@ -1,11 +1,3 @@
- _______  _______  _______  ___      _______            ___  _______ 
-|       ||       ||       ||   |    |       |          |   ||       |
-|_     _||   _   ||   _   ||   |    |  _____|          |   ||  _____|
-  |   |  |  | |  ||  | |  ||   |    | |_____           |   || |_____ 
-  |   |  |  |_|  ||  |_|  ||   |___ |_____  | ___   ___|   ||_____  |
-  |   |  |       ||       ||       | _____| ||   | |       | _____| |
-  |___|  |_______||_______||_______||_______||___| |_______||_______|
-
 Hola, como estan?
 Bienvenidos a Tools.js una libreria open source, disponible para cualquiera que 
 la encuentre en el mundo inmenso de GITHUB.
@@ -25,10 +17,15 @@ emprender.
 
 
 ## Index:
-1.-Como iniciar.
-2.- Ajax.
-	2.1-postData
-	2.2-import
+
+### 1.-Como iniciar.
+
+### 2.- Ajax.
+
+	#### 2.1-postData
+	
+	#### 2.2-import
+	
 
 
 Como Iniciar:
