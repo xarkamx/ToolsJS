@@ -24,7 +24,7 @@ ayudarme con este proyecto que al mas puro estilo de Donquixote he decidido
 emprender.
 
 
-Index:
+##Index:
 1.-Como iniciar.
 2.- Ajax.
 	2.1-postData
@@ -34,6 +34,7 @@ Index:
 Como Iniciar:
 
 Manda llamar:
+```
 <script type="text/javascript" src="js/main/helpers.js"></script>
 <script type="text/javascript" src="js/main/tools.js"></script>
 <script type="text/javascript" src="js/main/ajax.js"></script>
@@ -41,8 +42,8 @@ y despues solo:
 <script>
     let tools=new Tools();
 </script>
-
+```
 tu objeto tool sera el contenedor de el resto de funciones de esta libreria.
 
-2.- Ajax:
+##2.- Ajax:
 
