@@ -24,7 +24,7 @@ ayudarme con este proyecto que al mas puro estilo de Donquixote he decidido
 emprender.
 
 
-##Index:
+## Index:
 1.-Como iniciar.
 2.- Ajax.
 	2.1-postData
@@ -45,5 +45,5 @@ y despues solo:
 ```
 tu objeto tool sera el contenedor de el resto de funciones de esta libreria.
 
-##2.- Ajax:
+## 2.- Ajax:
 
