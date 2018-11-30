@@ -3,8 +3,8 @@ Bienvenidos a Tools.js una libreria open source, disponible para cualquiera que
 la encuentre en el mundo inmenso de GITHUB.
 
 El desarrollo de esta libreria de codigo abierto es primero que nada entender
-el por que de las elecciones de otras librerias o frameworks, basicamente mi
-desarrollo personal. 
+el por que de las elecciones de otras librerias o frameworks.
+
 En segundo lugar, pero no por ello menos importante es liberar al publico 
 (y su critica) una serie de herramientas que considero que podrian facilitarle 
 la vida a otros developers que estan ahi fuera, buscando herramientas ligeras 
@@ -22,9 +22,9 @@ emprender.
 
 ### 2.- Ajax.
 
-	#### 2.1-postData
-	
-	#### 2.2-import
+#### 2.1-postData
+
+#### 2.2-import
 	
 
 
