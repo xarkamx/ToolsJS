@@ -1,3 +1,5 @@
+import { optionalFn } from "./helpers";
+
 export class DOM {
   constructor() {
     HTMLElement.prototype.isReadOnly = this.isReadOnly;
@@ -28,7 +30,7 @@ export class DOM {
       item[prop] = value;
     }
   }
-  print() {
+  print(callback = null) {
     let iframe = document.createElement("iframe");
     document.body.appendChild(iframe);
     iframe.contentWindow.document.open();
@@ -36,6 +38,11 @@ export class DOM {
       this.body != null ? this.body.innerHTML : this.innerHTML
     );
     iframe.contentWindow.document.close();
+    iframe.contentWindow.addEventListener("afterprint", () => {
+      setTimeout(() => {
+        optionalFn(callback)();
+      }, 1000);
+    });
     window.setTimeout(ev => {
       iframe.contentWindow.print();
       document.body.removeChild(iframe);
