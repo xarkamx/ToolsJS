@@ -1,5 +1,4 @@
 /* eslint eqeqeq: 0*/
-var os = require("os");
 export class Helpers {
   objectToSerialize(param) {
     if (!param) {
@@ -104,13 +103,12 @@ export class Helpers {
       });
     });
   }
-  
 }
 /**
-   * Calcula los años que han pasado desde una fecha dada.
-   * @param Date fecha
-   */
- export function dateToYears(fecha) {
+ * Calcula los años que han pasado desde una fecha dada.
+ * @param Date fecha
+ */
+export function dateToYears(fecha) {
   let now = new Date();
   let born = new Date(fecha);
   let diff = now - born;
@@ -121,7 +119,7 @@ export class Helpers {
  * Calcula los dias que han pasado desde una fecha dada.
  * @param Date time
  */
- export function getTimePassed(time) {
+export function getTimePassed(time) {
   let currentDate = new Date();
   let passDate = new Date(time);
   let ms = currentDate - passDate;
@@ -140,7 +138,7 @@ export class Helpers {
  * @param string str
  * @return object || boolean
  */
- export function isJsonString(str) {
+export function isJsonString(str) {
   try {
     var json = JSON.parse(str);
     return json;
@@ -325,7 +323,7 @@ export function getImagesUrl(img) {
     .replace("//stora", "/stora")
     .replace(
       "yates.objetosdeculto.com/yates.objetosdeculto.com",
-      "yates.objetosdeculto.com",
+      "yates.objetosdeculto.com"
     );
   return url;
 }

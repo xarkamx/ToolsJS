@@ -23,8 +23,8 @@ export class Calcs {
   }
 }
 export class Time {
-  miliseconds = 0;
   constructor(time = "00:00") {
+    this.miliseconds = 0;
     this.time = time;
     this.timeToMiliseconds();
   }
