@@ -1,6 +1,6 @@
 {
   "name": "afio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Quick set of tools to work with request in vanilla js",
   "main": "index.js",
   "repository": "https://github.com/xarkamx/ToolsJS.git",
@@ -14,13 +14,24 @@
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
     },
-    "setupFilesAfterEnv": ["./tests/setupTests.js"]
+    "setupFilesAfterEnv": [
+      "./tests/setupTests.js"
+    ]
   },
   "devDependencies": {
     "babel-jest": "^27.3.1",
     "@babel/preset-env": "^7.16.0",
     "jest": "^27.3.1"
-    
-  }
-  
+  },
+  "keywords": [
+    "requests",
+    "jwt",
+    "vanilla",
+    "js",
+    "tools",
+    "fetch",
+    "token",
+    "auth",
+    "Bearer"
+  ]
 }
