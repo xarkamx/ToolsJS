@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import { AuthFetch } from "./src/app/AuthFetch";
 import { LoginManager } from "./src/app/LoginManager";
@@ -7,11 +7,4 @@ import { Calcs } from "./src/core/Calcs";
 import { Camera } from "./src/core/camera";
 import { Helpers } from "./src/core/helpers";
 
-export default Tools={
-    AuthFetch,
-    LoginManager,
-    BaseTransaction,
-    Helpers,
-    Calcs,
-    Camera,
-}
+export { AuthFetch, LoginManager, BaseTransaction, Helpers, Calcs, Camera };
