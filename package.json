@@ -1,7 +1,7 @@
 {
   "name": "afio",
   "version": "0.1.4",
-  "description": "Quick set of tools to work with request in vanilla js",
+  "description": "Quick set of tools to work with requests in vanilla js",
   "main": "index.js",
   "repository": "https://github.com/xarkamx/ToolsJS.git",
   "author": "Alberto <xarkamx@gmail.com>",
@@ -33,5 +33,11 @@
     "token",
     "auth",
     "Bearer"
+  ],
+  "browserList": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 11",
+    "not op_mini all"
   ]
 }

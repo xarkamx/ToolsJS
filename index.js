@@ -7,4 +7,12 @@ import { Calcs } from "./src/core/Calcs";
 import { Camera } from "./src/core/camera";
 import { Helpers } from "./src/core/helpers";
 
-export { AuthFetch, LoginManager, BaseTransaction, Helpers, Calcs, Camera };
+export {
+  AuthFetch,
+  LoginManager,
+  BaseTransaction,
+  Helpers,
+  Calcs,
+  Camera,
+  setBaseApiUrl,
+};

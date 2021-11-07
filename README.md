@@ -10,6 +10,35 @@ or in yarn: -`yarn add afio`
 
 ## QuickStart
 
+As soon you download the package you should be able to run AuthFetch from afio.
+
+```
+
+import {AuthFetch} from "afio"
+const authFetch = new AuthFetch("localPath")
+authFetch.get(params)
+
+```
+
+### Set the main api url
+
+    There is two ways to set the baseApiUrl (by default it is localhost:3000).
+
+    in a global set up:
+
+    ```
+    import {setBaseApiUrl} from "afio"
+    setBaseApiUrl("https://baconipsum.com");
+    ```
+    or in a local setup:
+
+    ```
+    import {AuthFetch} from "afio"
+    const authFetch = new AuthFetch("localPath")
+    authFetch.url = "https://your-custom-api"
+
+    ```
+
 ### Hello world:
 
 ```

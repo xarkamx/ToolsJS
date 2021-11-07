@@ -3,10 +3,10 @@ import config from "../core/config";
 import { Helpers } from "../core/helpers";
 import { LoginManager } from "./LoginManager";
 
-/**
- * @description Permite hacer request authenticadas.
- */
-
+let apiUrl = config.apiUrl;
+export function setBaseApiUrl(url) {
+  apiUrl = url || apiUrl;
+}
 export class AuthFetch extends LoginManager {
   /**
    * @description define el path que sera utilizado por AuthFetch
@@ -16,16 +16,19 @@ export class AuthFetch extends LoginManager {
   constructor(path) {
     super();
     path = path.replace(/\/$/, "");
-    let token = this.getToken();
+    let authObject = this.getToken();
     this.headers = {};
 
-    if (token) {
-      token = token.token;
+    if (authObject) {
+      let token = authObject.token;
       let bearer = `Bearer ${token}`;
       this.headers.Authorization = bearer;
     }
-    const url = config.apiUrl;
-    this.path = url + "/" + path;
+    this.url = apiUrl;
+    this.path = path;
+  }
+  get fullPath() {
+    return `${this.url}/${this.path}`;
   }
   /**
    * @description obtiene datos de manera asyncrona
@@ -77,7 +80,10 @@ export class AuthFetch extends LoginManager {
   _setPath(parameters) {
     const helpers = new Helpers();
     const path = this.path + "?" + helpers.objectToSerialize(parameters);
-    return (path);
+    return path;
+  }
+  set basePath(path) {
+    this.path = path;
   }
   async _fetch(parameters, method, hasFiles) {
     if (!hasFiles) {
@@ -87,11 +93,11 @@ export class AuthFetch extends LoginManager {
       };
     }
     const response = await new Ajax().fetchData(
-      this.path,
+      this.fullPath,
       parameters,
       method,
       this.headers,
-      !hasFiles,
+      !hasFiles
     );
     //this.hasError(response);
     return response;
