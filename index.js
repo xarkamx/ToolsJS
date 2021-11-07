@@ -1,6 +1,6 @@
 "use strict";
 
-import { AuthFetch } from "./src/app/AuthFetch";
+import { AuthFetch, setBaseApiUrl } from "./src/app/AuthFetch";
 import { LoginManager } from "./src/app/LoginManager";
 import { BaseTransaction } from "./src/app/transactions/BaseTransaction";
 import { Calcs } from "./src/core/Calcs";
