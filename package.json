@@ -1,0 +1,28 @@
+{
+  "name": "tools-js",
+  "version": "1.0.0",
+  "description": "Quick set of tools to work with JS",
+  "main": "index.js",
+  "repository": "https://github.com/xarkamx/ToolsJS.git",
+  "author": "Alberto <xarkamx@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "setupFilesAfterEnv": ["./tests/setupTests.js"]
+  },
+  "devDependencies": {
+    "babel-jest": "^27.3.1",
+    "jest": "^27.3.1"
+    
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.16.0"
+  }
+  
+}

@@ -76,34 +76,12 @@ export class Helpers {
     document.body.innerHTML = msg.responseText;
     throw msg;
   }
-  removeBySelector(selector) {
-    let killList = document.querySelectorAll(selector);
-    let pos = 0;
-    for (pos; pos < killList.length; ++pos) {
-      let killItem = killList[pos];
-      killItem.parentElement.removeChild(killItem);
-    }
-  }
   decodeUriObject(obj) {
     let decoded = {};
     for (let key in obj) {
       decoded[key] = decodeURI(obj[key]);
     }
     return decoded;
-  }
-  /**
-   *
-   * @param {*} arrg
-   * @param {*} key
-   * @param {*} value
-   */
-  findInArrayOfObjects(arrg, key, value) {
-    for (let index in arrg) {
-      let item = arrg[index];
-      if (item[key] === value) {
-        return item;
-      }
-    }
   }
   fileTo64(file) {
     let reader = new FileReader();
@@ -126,261 +104,65 @@ export class Helpers {
       });
     });
   }
-  getBodyToken() {
-    return document
-      .querySelector('meta[name="csrf-token"]')
-      .getAttribute("content");
-  }
-  merge(...objs) {
-    let finalObject = {};
-    for (let index in objs) {
-      let obj = objs[index];
-      for (let keys in obj) {
-        if (obj[keys] !== "") {
-          finalObject[keys] = obj[keys];
-        }
-      }
-    }
-    return finalObject;
-  }
-  /**
-   * busca un elemento en un arreglo y lo elimina.
-   * @param {*} args
-   * @param {*} key
-   * @param {*} value
-   */
-  searchAndDestroy(args, key, value) {
-    let filter = args.filter((item, index) => {
-      return item[key] !== value;
-    });
-    return filter;
-  }
-  searchAndInsert(args, where, val, key, insert) {
-    return args.map((item, index) => {
-      if (item[where] === val) {
-        item[key] = insert;
-      }
-      return item;
-    });
-  }
-  /**
-   * Permite buscar cualquier elemento en base a una propiedad.
-   * @param {*} args
-   * @param string key
-   * @param {*} value
-   * @returns Array
-   */
-  searchByKey(args, key, value) {
-    if (value === undefined) {
-      return [];
-    }
-    value = `${value}`;
-    let values = value.split(/,/);
-    let filter = args.filter((item, index) => {
-      for (let pos in values) {
-        let val = values[pos];
-        if (item[key] == val) return true;
-      }
-      return false;
-    });
-    return filter;
-  }
-  /**
-   * Permite buscar en un objeto
-   * @param {*} args
-   * @param {*} query
-   */
-  searchInObject(args, query) {
-    return args.filter((item, index) => {
-      for (let key in item) {
-        if (item[key] == null) {
-          continue;
-        }
-        let data = item[key].toString();
-        let regQuery = RegExp(query, "i");
-        let match = data.match(regQuery);
-        if (match !== null) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-
-  getObjectTitles(obj) {
-    let result = [];
-    for (let key in obj) {
-      result.push({ key });
-    }
-    return result;
-  }
-  flatMultilevel(multiLevelObject) {
-    let flatObject = {};
-    for (let key in multiLevelObject) {
-      let item = multiLevelObject[key];
-      flatObject[key] = item;
-      flatObject = this.merge(flatObject, item);
-    }
-    return flatObject;
-  }
-  searchAndGetIndex(arr, key, query) {
-    for (let index in arr) {
-      let item = arr[index];
-      if (item[key] === query) {
-        return index;
-      }
-    }
-    return -1;
-  }
-  searchCommonAndUpdate(contentID, newData, currentData) {
-    let data = this.flatMultilevel(newData);
-    let index = this.searchAndGetIndex(currentData, "id", contentID);
-    for (let key in data) {
-      currentData[index][key] =
-        currentData[index][key] !== undefined
-          ? currentData[index][key]
-          : data[key];
-    }
-    return currentData;
-  }
-  splitOnUpperCase($text) {
-    $text = $text.split(/(?=[A-Z])/);
-    return $text.join(" ");
-  }
-  /**
-   * @description Obtiene el ultimo item del array
-   * @param {array} arr
-   */
-  lastItem(arr) {
-    return arr[arr.length - 1];
-  }
-  /**
-   * @description Ordena un objeto por alguno de sus elementos.
-   * @param {object} data
-   * @param {string} by
-   * @param {string} direction asc|desc
-   */
-  orderBy(data, by, direction = "asc") {
-    data = this.cloneArray(data);
-    return data.sort((a, b) => {
-      if (a[by] === null) {
-        return 1;
-      }
-      if (b[by] === null) {
-        return 1;
-      }
-      if (typeof a[by] === "string") {
-        return direction === "asc"
-          ? a[by].localeCompare(b[by])
-          : b[by].localeCompare(a[by]);
-      }
-      return direction === "asc" ? a[by] - b[by] : b[by] - a[by];
-    });
-  }
-  cloneArray(data) {
-    data = { ...data };
-    data = Object.values(data);
-    return data;
-  }
-  /**
+  
+}
+/**
    * Calcula los años que han pasado desde una fecha dada.
    * @param Date fecha
    */
-  dateToYears(fecha) {
-    let now = new Date();
-    let born = new Date(fecha);
-    let diff = now - born;
-    let age_dt = new Date(diff);
-    return Math.abs(age_dt.getUTCFullYear() - 1970);
+ export function dateToYears(fecha) {
+  let now = new Date();
+  let born = new Date(fecha);
+  let diff = now - born;
+  let age_dt = new Date(diff);
+  return Math.abs(age_dt.getUTCFullYear() - 1970);
+}
+/**
+ * Calcula los dias que han pasado desde una fecha dada.
+ * @param Date time
+ */
+ export function getTimePassed(time) {
+  let currentDate = new Date();
+  let passDate = new Date(time);
+  let ms = currentDate - passDate;
+  let days = ms / 1000 / 3600 / 24;
+  let hours = (days - Math.floor(days)) * 24;
+  let mins = Math.ceil((hours - Math.floor(hours)) * 60);
+  return {
+    days: Math.floor(days),
+    hours: Math.floor(hours),
+    mins: Math.floor(mins),
+  };
+}
+/**
+ * Revisa si la cadena es un json valido y de ser el caso
+ *  regresa el objeto del json
+ * @param string str
+ * @return object || boolean
+ */
+ export function isJsonString(str) {
+  try {
+    var json = JSON.parse(str);
+    return json;
+  } catch (e) {
+    return false;
   }
-  /**
-   * Calcula los dias que han pasado desde una fecha dada.
-   * @param Date time
-   */
-  getTimePassed(time) {
-    let currentDate = new Date();
-    let passDate = new Date(time);
-    let ms = currentDate - passDate;
-    let days = ms / 1000 / 3600 / 24;
-    let hours = (days - Math.floor(days)) * 24;
-    let mins = Math.ceil((hours - Math.floor(hours)) * 60);
-    return {
-      days: Math.floor(days),
-      hours: Math.floor(hours),
-      mins: Math.floor(mins),
-    };
-  }
-  /**
-   * @description Separa una cadena con formato de Path en sus componente individuales
-   * @param {string} path
-   * @returns {object} {folder,fileName,ext}
-   */
-  pathSlicer(path) {
-    let fileName = this.lastItem(path.split(/\//));
-    let ext = this.lastItem(fileName.split(/\./));
-    let folder = path.replace(fileName, "");
-    folder = folder.replace(/\/\//, "/");
-    return { fileName, ext, folder };
-  }
-  /**
-   * Revisa si la cadena es un json valido y de ser el caso
-   *  regresa el objeto del json
-   * @param string str
-   * @return object || boolean
-   */
-  isJsonString(str) {
-    try {
-      var json = JSON.parse(str);
-      return json;
-    } catch (e) {
-      return false;
+}
+export function keylogger(callback) {
+  let search = "";
+  let searcher = (el) => {
+    search = el.key;
+    if (typeof search === "undefined") {
+      return "";
     }
-  }
-  /* @description Compara dos arreglos y devuelve true si son iguales
-   * @param {array} array1
-   * @param {array} array2
-   * @returns boolean
-   */
-  compareArrays(array1, array2, key = null) {
-    if (!array1 || !array2) return;
-
-    let result;
-
-    array1.forEach((e1, i) =>
-      array2.forEach((e2) => {
-        let item1 = e1;
-        if (key) {
-          item1 = e1[key];
-        }
-
-        if (e1.length > 1 && e2.length) {
-          result = this.compareArrays(e1, e2);
-        } else if (item1 !== e2) {
-          result = false;
-        } else {
-          result = true;
-        }
-      }),
-    );
-
-    return result;
-  }
-  keylogger(callback) {
-    let search = "";
-    let searcher = (el) => {
-      search = el.key;
-      if (typeof search === "undefined") {
-        return "";
-      }
-      search = search.replace(/AltGraph/, "{");
-      callback(search);
-    };
-    document.body.addEventListener("keydown", searcher);
-    return {
-      killItWithFire: () =>
-        document.body.removeEventListener("keydown", searcher),
-    };
-  }
+    search = search.replace(/AltGraph/, "{");
+    callback(search);
+  };
+  document.body.addEventListener("keydown", searcher);
+  return {
+    killItWithFire: () =>
+      document.body.removeEventListener("keydown", searcher),
+  };
 }
 /**
  * checa si el callback es una funcion valida, de lo contrario regresa un objeto
@@ -524,8 +306,6 @@ export function addDays(date, days) {
  * @return string
  */
 export function getAPIUrl() {
-  let hostname = os.hostname();
-  if (process.browser) hostname = window.location.hostname;
   const url =
     hostname === "DESKTOP-7RD2A3Q" || hostname === "localhost"
       ? process.env.REACT_APP_LOCAL_URL

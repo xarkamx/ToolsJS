@@ -57,7 +57,6 @@ export class Ajax extends Helpers {
       parameters = this.objectToSerialize(parameters);
       path += "?" + parameters;
       parameters = "";
-      //args.body = JSON.stringify(parameters);
     } else {
       args.body = stringify
         ? JSON.stringify(parameters)
